@@ -2,7 +2,7 @@ services:
   - type: web
     name: maqam-detector-api
     runtime: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: apt-get update && apt-get install -y libsndfile1 && pip install -r requirements.txt
     startCommand: gunicorn server:app --bind 0.0.0.0:$PORT --timeout 120
     envVars:
       - key: PYTHON_VERSION
